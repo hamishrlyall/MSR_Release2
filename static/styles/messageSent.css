@@ -1,0 +1,30 @@
+h2{
+    font-size: 30px;
+}
+
+h3{
+    font-size: 20px;
+}
+
+h4{
+    margin-left: 40px; 
+    font-size: 16px;
+}
+
+input{
+    background-color: rgb(211, 147, 29);
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: 'Raleway', sans-serif;
+    height: 46px;
+    width: 128px;
+    font-size: 16px;
+
+}
+input:hover{
+    background-color:#EDC881;
+    transition: background-color .3s;
+}

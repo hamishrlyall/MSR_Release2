@@ -1,0 +1,200 @@
+extends layout.pug
+
+append styles
+    link(rel="stylesheet", href="/styles/slideshow.css")
+    link(rel="stylesheet", href="/styles/portfolio.css")
+    link(rel="stylesheet", href="/styles/imagePopup.css")
+    link(rel="stylesheet", href="/styles/timeline.css")
+    link(rel="stylesheet", href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css')
+    //-link(rel="stylesheet", href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css')
+prepend scripts
+    //-script(src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js')
+    script!= "const Portfolio = " + JSON.stringify(Portfolio)
+    script(src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.js')
+    script(src='/scripts/slideshow.js')
+    script(src="/scripts/portfolio.js")
+    script(src="/scripts/map.js")
+
+append scripts
+    script(src="/scripts/imagePopup.js")
+    script(src="/scripts/timeline.js")
+
+
+
+block content
+    div.row
+        div.col.col-lg-6#mainView
+            nav.navbar.navbar-expand-sm.navbar-light.justify-content-end.portNav#navbar
+                h3= Portfolio.firstName + " " + Portfolio.otherName + " " + Portfolio.lastName 
+                div.ml-auto.mr-2
+                button.navbar-toggler.collapsed(type="button" data-target="#ProfileNav" data-toggle="collapse" aria-controls="ProfileNav" aria-expanded="false" aria-label="Toggle navigation")
+                    span.navbar-toggler-icon
+                div.collapse.navbar-collapse.flex-grow-0#ProfileNav
+                    ul.navbar-nav.text-right
+                        /// Try to add next sprint
+                        if Portfolio.rollOfHonour != ""
+                            li.nav-item
+                                a.nav-link.font-weight-bold.text-dark#navLink(href= Portfolio.rollOfHonour) Roll of Honour
+                        if Portfolio.aifId > 0
+                            li.nav-item
+                                a.nav-link.font-weight-bold.text-dark#navLink(href= "https://www.aif.adfa.edu.au/showPerson?pid=" + Portfolio.aifId) AIF Profile
+                        if Portfolio.obituary != ""
+                            li.nav-item
+                                a.nav-link.font-weight-bold.text-dark#navLink(href= Portfolio.obituary) Newspaper Obituary
+
+            div.card.col-sm-12.text-white.bg-dark.mb-3
+                div.row.card-header#mapsideHeader
+                    div.col.col-lg-4#mapsideImage
+                        img.img-fluid(src=Portfolio.Multimedia.source alt=Portfolio.Multimedia.altText)
+                    div.col.col-lg-8.pb-3.customScroll#mapsideText
+                        table.table
+                            if Portfolio.alias != ""
+                                tr
+                                    td
+                                        h6.mb-0= "Alias: "
+                                    td
+                                        h6.text-right= Portfolio.alias
+                            if Portfolio.dateOfBirth.getTime() != -2208988800000
+                                tr
+                                    td
+                                        h6.mb-0= "Date of Birth:"
+                                    td
+                                        h6.text-right= Portfolio.dateOfBirth.getDate() + "-" + (Portfolio.dateOfBirth.getMonth() + 1) + "-" + Portfolio.dateOfBirth.getFullYear()
+                            if Portfolio.Address != ""
+                                tr
+                                    td
+                                        h6.mb-0= "Address: "
+                                    td
+                                        h6.text-right= Portfolio.address
+                            if Portfolio.dateOfDeath.getTime() != -2208988800000
+                                tr
+                                    td
+                                        h6.mb-0= "Date of Death: "
+                                    td
+                                        h6.text-right= Portfolio.dateOfDeath.getDate() + "-" + (Portfolio.dateOfDeath.getMonth() + 1) + "-" + Portfolio.dateOfDeath.getFullYear()
+                            if Portfolio.Occupation != ""
+                                tr
+                                    td
+                                        h6.mb-0= "Occupation: "
+                                    td
+                                        h6.text-right= Portfolio.occupation
+                            if Portfolio.enlistedDate.getTime() != -2208988800000
+                                tr
+                                    td
+                                        h6.mb-0= "Enlistment Date: "
+                                    td
+                                        h6.text-right= Portfolio.enlistedDate.getDate() + "-" + (Portfolio.enlistedDate.getMonth() + 1) + "-" + Portfolio.enlistedDate.getFullYear()
+                            if Portfolio.Regiment != ""
+                                tr
+                                    td
+                                        h6.mb-0= "Regiment: "
+                                    td
+                                        h6.text-right= Portfolio.regimentNo
+                            if Portfolio.unit != ""
+                                tr
+                                    td
+                                        h6.mb-0= "Unit: "
+                                    td
+                                        h6.text-right= Portfolio.unit
+                            if Portfolio.maritalStatus != ""
+                                tr
+                                    td
+                                        h6.mb-0= "Marital Status: "
+                                    td
+                                        h6.text-right= Portfolio.maritalStatus
+                            if Portfolio.religion != ""
+                                tr
+                                    td
+                                        h6.mb-0= "Religion: "
+                                    td
+                                        h6.text-right= Portfolio.religion
+                            if Portfolio.fate != ""
+                                tr
+                                    td
+                                        h6.mb-0= "Fate: "
+                                    td
+                                        h6.text-right= Portfolio.fate
+                            if Portfolio.nextOfKin != ""
+                                tr
+                                    td
+                                        h6.mb-0= "Next of Kin: "
+                                    td
+                                        h6.text-right= Portfolio.nextOfKin
+                            if Portfolio.creditedStudent != ""
+                                tr
+                                    td
+                                        h6.mb-0= "Portfolio by: "
+                                    td
+                                        h6.text-right= Portfolio.creditedStudent
+
+                div.card-body.pb-2#mapsideBody
+                    div#map
+                    h3#mapFootnote Sample Text
+                    
+                    .timeline-container 
+                        .timeline
+                            each lifeStage, index in Portfolio.LifeStages
+                                .t-lifestage()&attributes({'data-hex': lifeStage.rgbValue})
+                                    each slide, slideindex  in lifeStage.Slides
+                                        .t-slide()&attributes({'data-start': new Date(Date.parse(Portfolio.LifeStages[index].Slides[slideindex].dateStart)).getFullYear(), 'data-end': new Date(Date.parse(Portfolio.LifeStages[index].Slides[slideindex].dateEnd)).getFullYear()})
+
+
+
+        div.col.container.col-lg-6
+            nav.navbar.navbar-expand-sm.navbar-light.portNav#navbar
+                h3#lifeEventTitle Life Event
+            div.card.col-sm-12.text-white.bg-dark.mb-3#slideside
+                div.slide.carousel#slides(data-wrap="false")
+                    div.carousel-inner.customScroll.mt-3
+                        each lifeStage in Portfolio.LifeStages
+                            each slide in lifeStage.Slides
+                                if slide.SlideId == Portfolio.LifeStages[0].Slides[0].SlideId
+                                    div.carousel-item.active
+                                        h1.card-header#slidesideTitle= slide.heading
+                                        each content in slide.Contents
+                                            if content.Multimedia != null && content.Multimedia.MediaTypeId == 'imageLocal'
+                                                h3= content.heading
+                                                img.mb-3.mx-auto.d-block#slideSideImage(src=content.Multimedia.source data-toggle="modal" alt=content.Multimedia.source data-target="#myModal")
+                                                p#slideSideDescription= content.text
+                                            else if content.Multimedia != null && content.Multimedia.MediaTypeId == 'videoYoutube'
+                                                h3= content.heading
+                                                div.embed-responsive-16by9
+                                                    iframe.mb-3.ml-0.embed-responsive(src=content.Multimedia.source alt=content.Multimedia.altText allowfullscreen)
+                                                p#slideSideDescription= content.text
+                                            else
+                                                h3= content.heading
+                                                p#slideSideDescription= content.text
+                                else
+                                    div.carousel-item
+                                        h1.card-header#slidesideTitle= slide.heading
+                                        each content in slide.Contents
+                                            if content.Multimedia != null && content.Multimedia.MediaTypeId == 'imageLocal'
+                                                h3= content.heading
+                                                img.mb-3.mx-auto.d-block#slideSideImage(src=content.Multimedia.source data-toggle="modal" alt=content.Multimedia.altText data-target="#myModal")
+                                                p#slideSideDescription= content.text
+                                            else if content.Multimedia != null && content.Multimedia.MediaTypeId == 'videoYoutube'
+                                                h3= content.heading
+                                                div.embed-responsive-16by9
+                                                    iframe.mb-3.ml-0.embed-responsive(src=content.Multimedia.source alt=content.Multimedia.altText allowfullscreen)
+                                                p#slideSideDescription= content.text
+                                            else
+                                                h3= content.heading
+                                                p#slideSideDescription= content.text
+                                                
+                a.carousel-control-prev#slidePrev(href="#slides" role="button" data-slide="prev" onclick="moveSlideBackward()")
+                    span.carousel-control-prev-icon(aria-hidden="true")
+                    span.sr-only Previous
+                a.carousel-control-next#slideNext(href="#slides" role="button" data-slide="next" onclick="moveSlideForward()")
+                    span.carousel-control-next-icon(aria-hidden="true")
+                    span.sr-only Next
+                    
+        div.modal.fade#myModal(tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true")
+            div.modal-dialog(role="document")
+                div.modal-content
+                    div.modal-body
+                        button.btn.btn-danger(type="button" data-dismiss="modal" aria-label="Close" style="")
+                            span(aria-hidden="true") &times;
+                        img.img-fluid.mx-auto.d-block#image(src="//media.tenor.com/images/556e9ff845b7dd0c62dcdbbb00babb4b/tenor.gif")
+            
+
+

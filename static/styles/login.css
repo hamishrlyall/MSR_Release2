@@ -1,0 +1,82 @@
+form {
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content
+}
+
+h1 {
+  text-align: center
+}
+
+form * {
+  display: block
+}
+
+.submit {
+  width: 195px !important;
+  height: 32px !important;
+  text-align: center;
+  font-size: 10pt !important;
+  margin-top: 5pt
+}
+
+.labelE {
+  margin-bottom: 7pt !important
+}
+
+.email {
+  margin-top: 7pt !important;
+  text-align: left
+}
+
+.email:focus::-webkit-input-placeholder {
+  opacity: 0;
+}
+
+.labelP {
+  margin-top: 7pt !important
+}
+
+.password {
+  margin-top: 7pt !important;
+  text-align: left
+}
+
+.password:focus::-webkit-input-placeholder {
+  opacity: 0;
+}
+
+.field-icon {
+  float: right;
+  margin-left: 25px;
+  margin-top: 25px;
+  position: relative;
+  z-index: 2;
+}
+
+.button:hover {
+  color: #333333
+}
+
+input {
+  font-size: 16px;
+  height: 30px;
+}
+
+i {
+  display: inline;
+  position: relative;
+  left: 197px;
+  bottom: 24px;
+  cursor: pointer;
+  opacity: 0.5;
+  z-index: 2;
+}
+
+.btn-show-hide-pwd:hover {
+  opacity: 1;
+}
+
+.btn-show-hide-pwd:active {
+  transform: scale(0.9);
+}

@@ -1,0 +1,113 @@
+extends layout.pug
+
+append styles
+    link(rel="stylesheet", href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css", integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==", crossorigin="")
+    link(rel="stylesheet", href="/styles/search.css")
+
+append scripts
+    script(src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js", integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==", crossorigin="")
+    script(src="/scripts/search.js")
+
+block content
+    //-CONTENT-STARTS-HERE-//
+    section
+        h2.title Advanced Search
+        form(action="/search", method="get")
+            div.form-row
+                div.col-md-2.mb-3
+                    label(for="regNum") Regimental Number
+                    input.form-control(type="search", name="regNum", value=params.regNum, placeholder="19632")
+                div.col-md-3.mb-3
+                    label(for="name") Name
+                    input.form-control(type="search", name="name", value=params.name, placeholder="Charles Lilley")
+                div.col-md-4.mb-3
+                    label(for="place") Address
+                    input.form-control(type="search", name="place", value=params.place, placeholder="Norton Street, Wangaratta, Victoria")
+                div.col-md-3.mb-3
+                    label(for="battalion") Unit
+                    input.form-control(type="search", name="battalion", value=params.battalion, placeholder="Field Artillery Brigade 8 Battery 29")
+            div.form-row
+                .col-md-5
+                input.btn.btn-secondary.col-md-2(type="submit", value="Search")
+                .col-md-5
+    section
+        h3 MSR Portfolio Results:
+
+        //-Tab Navigation
+        ul.nav.nav-pills#msr_tab(role="tablist")
+          li.nav-item
+            a.nav-link#msr-list-tab(data-toggle="tab" href="#msr-list" role="tab" aria-controls="msr-list" aria-selected="true")= 'List View'
+          li.nav-item
+            a.nav-link.active#msr-map-tab(data-toggle="tab" href="#msr-map" role="tab" aria-controls="msr-map" aria-selected="false")= 'Map View'
+        //-Tab Panes
+        .tab-content
+            //-LIST VIEW
+            .tab-pane#msr-list(role="tabpanel" aria-labelledby="list-tab")
+                if msr_results.length==0
+                    h4(style="text-align: center") No Results Found
+                else
+                    table.table
+                        thead
+                            th(style="width: 13.66%") Regimental Number
+                            th(style="width: 21%") Name
+                            th(style="width: 22%") Address
+                            th(style="width: 30.33%") Unit
+                            th(style="width: 10%") NAA
+                        each result, index in msr_results
+                            -var media_source = multimedia.filter(m => m.PortfolioId == result.PortfolioId)[0].Multimedia.source
+                            tr(data-media_source = media_source)
+                                td.regNumber= result.regimentNo
+                                td.name
+                                    -var href = '/portfolio/' + result.PortfolioId + "#mainView"
+                                    a(href= href)= result.lastName.toUpperCase() + " " + result.firstName + " " + result.otherName
+                                //- var coords = msrGeoCodes[index] != null ? msrGeoCodes[index].features[0].geometry.coordinates : null
+                                td.address(data-coords= msrGeoCodes[index])= result.address
+                                td.battalion= result.unit
+                                td.NAA
+                                    a(href= "https://recordsearch.naa.gov.au/SearchNRetrieve/Interface/SearchScreens/NameSearch.aspx")= 'To Search'
+            //-MAP VIEW
+            .tab-pane.active.map#msr-map(role="tabpanel" aria-labelledby="map-tab")
+                #msrmap
+    section
+        h3 AIF Search Results:
+
+        //-Tab Navigation
+        ul.nav.nav-pills#aif_tab(role="tablist")
+          li.nav-item
+            a.nav-link.active#aif-list-tab(data-toggle="tab" href="#aif-list" role="tab" aria-controls="aif-list" aria-selected="true")= 'List View'
+          li.nav-item
+            a.nav-link#aif-map-tab(data-toggle="tab" href="#aif-map" role="tab" aria-controls="aif-map" aria-selected="false")= 'Map View'
+        //-Tab Panes
+        .tab-content
+            //-LIST VIEW
+            .tab-pane.active#aif-list(role="tabpanel" aria-labelledby="list-tab")
+                if aif_results.length==0
+                    h4(style="text-align: center") No Results Found
+                else
+                    table.table
+                        thead
+                            th(style="width: 13.66%") Regimental Number
+                            th(style="width: 21%") Name
+                            th(style="width: 22%") Address
+                            th(style="width: 30.33%") Unit
+                            th(style="width: 10%") NAA
+                        each result, index in aif_results
+                            tr
+                                td.regNumber= result.regNum
+                                td.name
+                                    a(href= result.href)= result.name
+                                //- var coords = aifGeoCodes[index] != null ? aifGeoCodes[index].features[0].geometry.coordinates : null
+                                td.address(data-coords= aifGeoCodes[index])= result.address
+                                td.battalion= result.battalion
+                                td.NAA
+                                    a(href= "https://recordsearch.naa.gov.au/SearchNRetrieve/Interface/SearchScreens/NameSearch.aspx")= 'To Search'
+            //-MAP VIEW
+            .tab-pane.map#aif-map(role="tabpanel" aria-labelledby="map-tab")
+                #aifmap
+
+
+
+        
+
+   
+    

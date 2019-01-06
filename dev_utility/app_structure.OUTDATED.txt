@@ -1,0 +1,32 @@
+FILE STRUCTURE:
+app.js -Entry Point, links all the files together. Should rarely be changed.
+gulpfile.js -Defines gulp commands that are run on startup/Build and Release for automation of tasks (like compiling css pre-processor tasks)
+package.json -Lists dependencies, defines the node application.
+package-lock.json -Auto generated on npm install. 
+/node_modules -Auto generated on npm install.
+/dev_utility -Place to put stuff we want over version control
+    app_structure -This file.
+    RUN_AS_ADMIN -Run as admin on a blank machine and it should install everything if it works.
+/public -Front end related files
+    public_routes -Defines the front end routing
+    /views -Holds the pug files for each page/template
+    /static -Anything that the client might need access to
+        /assets -Everything thats not css, js or from a database 
+        /scripts -Client side js files
+            global.js -Every page will load this file
+            * -Any other file is loaded case by case
+        /styles
+            style.css -Auto-generated from source.???. Every page will load this file
+            source.???. -Css pre-processor file
+/api --Back end related files
+    api_routes -Defines the back end routing
+
+DEPENDENCIES:
+API and Routing
+    -express
+View Engine
+    -pug
+Css Pre-processor
+    -??????
+Task Automation
+    -Gulp

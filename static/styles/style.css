@@ -1,0 +1,132 @@
+#navbar {
+    background-color: #EDC881;
+	font-size: 21px;
+}
+
+.nav-link:hover {
+    background-color: #E7B56B;
+    transition: background-color .3s;
+}
+
+.dropdown a {
+    background-color: #EDC881;
+}
+
+.dropdown a:hover {
+        background-color: #E7B56B;
+
+    }
+
+.dropdown-menu {
+	margin: 0 !important;
+	border: 0 !important;
+}
+
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    padding-bottom: 60px;
+}
+a {
+	color: inherit;
+} 
+
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+	background-color: #EDC881;
+	font-size: 4vw;
+	text-align: center;
+	text-decoration: none;
+	color: black;
+}
+
+@media (min-width: 364px) {
+    .footer {
+        font-size: 15px;
+    }
+}
+
+header {
+    background-color: white;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+
+#title {
+    display: inline-block;
+    margin: 5px;
+    line-height: 0.85em;
+    font-size: 8vw;
+}
+
+@media (min-width: 1000px) {
+    #title {
+        font-size: 80px;
+    }
+}
+
+#title h1 {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+    text-align: justify;
+    font-size: inherit;
+    line-height: inherit;
+	color: black;
+}
+
+#logo {
+    top: 0;
+    margin: 0;
+    padding-right: 5px;
+    height: 1.6em;
+    animation: spin 8s linear 0s infinite reverse;
+    animation-play-state: paused;
+    vertical-align: 0;
+}
+
+#title #logo:hover {
+    animation-play-state: running;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(360deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.text-shadow {
+    text-shadow: 1px 2px 2px #919191;
+    color: black;
+}
+
+input::-webkit-input-placeholder {
+    color: lightgray !important;
+}
+
+input:-moz-placeholder { /* Firefox 18- */
+    color: lightgray !important;
+}
+
+input::-moz-placeholder { /* Firefox 19+ */
+    color: lightgray !important;
+}
+
+input:-ms-input-placeholder {
+    color: lightgray !important;
+}

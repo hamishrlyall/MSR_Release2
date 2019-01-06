@@ -1,0 +1,31 @@
+extends layout.pug
+
+append styles
+    link(rel="stylesheet", href="/styles/login.css")
+    link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" 
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" 
+        crossorigin="anonymous")
+  
+
+prepend scripts
+    script(src="/scripts/login.js")
+
+block content
+    //-CONTENT-STARTS-HERE-//
+    body
+        section
+            h2.title(style='margin:auto; width:10%; margin-bottom:25px') Login
+            form(method='', action='')   
+                label.labelE Email
+                //-email box below-//
+                input.form-control(type='email', name='email', placeholder='') 
+                
+                label.labelP Password
+                //-password box -//
+                input#password.form-control(type='password', name='password', placeholder='', style='margin-bottom:15px')
+           
+                //-login button-//
+                input.submit(type='submit', value='LOGIN', class='button', style='font-weight:bold')
+
+        
+        

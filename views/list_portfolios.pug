@@ -1,0 +1,30 @@
+extends layout.pug
+
+append styles
+    //-link(rel="stylesheet", href="/styles/advancedSearch.css")
+
+prepend scripts
+    //-script(src="/scripts/FILENAME.js")
+
+block content
+    //-CONTENT-STARTS-HERE-//
+    section
+        h1.title All Portfolios
+        if Portfolios.length==0
+            h2(style="text-align: center") No Results Found
+        else
+            table.table
+                thead
+                    th(style="width: 16.66%") Regimental Number
+                    th(style="width: 25%") Name
+                    th(style="width: 25%") Address
+                    th(style="width: 33.33%") Battalion
+                each result in Portfolios
+                
+                    tr
+                        td.regNumber= result.regimentNo
+                        td.name
+                            -var href = '/portfolio/' + result.PortfolioId + "#mainView"
+                            a(href= href)= result.lastName.toUpperCase() + " " + result.firstName + " " + result.otherName
+                        td.address= result.address
+                        td.battalion= result.unit

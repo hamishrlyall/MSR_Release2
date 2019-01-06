@@ -1,0 +1,22 @@
+extends layout.pug
+
+prepend styles
+    link(rel="stylesheet", href="/styles/timeline.css")
+
+append scripts
+    script(src="/scripts/timeline.js")
+
+block content
+    .timeline-container 
+        .timeline
+            .t-lifestage(data-hex="3E0E35")
+                .t-slide(data-start="1910", data-end="1915")
+                .t-slide(data-start="1915", data-end="1932")
+                .t-slide(data-start="1933", data-end="1937")
+            .t-lifestage(data-hex="516017")
+                .t-slide(data-start="1938", data-end="1939")
+                .t-slide(data-start="1940", data-end="1944")
+                .t-slide(data-start="1944", data-end="1950")
+            .t-lifestage(data-hex="B3FEDF")
+                .t-slide(data-start="1951", data-end="1958")
+                .t-slide(data-start="1958", data-end="1959")

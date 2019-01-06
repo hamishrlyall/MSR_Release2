@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1b64825e-840f-41af-921b-5c7a2c56114b}</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <ProjectView>ProjectFiles</ProjectView>
+    <StartupFile>app.js</StartupFile>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <LastActiveSolutionConfig>Debug|Any CPU</LastActiveSolutionConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <ItemGroup>
+    <Content Include="package-lock.json" />
+    <Content Include="package.json" />
+    <Content Include="app.js" />
+    <Content Include="gulpfile.js" />
+    <Content Include="dev_utility\app_structure.OUTDATED.txt" />
+    <Content Include="dev_utility\README.txt" />
+    <Content Include="routing\public\controllers\list_portfolios.js" />
+    <Content Include="routing\private\private_routes.js" />
+    <Content Include="routing\public\controllers\search.js" />
+    <Content Include="routing\public\public_routes.js" />
+    <Content Include="static\assets\mappin.png" />
+    <Content Include="static\styles\dataEntryStyles.css">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\styles\search.css" />
+    <Content Include="static\styles\timeline.css">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="views\about.pug" />
+    <Content Include="views\list_portfolios.pug" />
+    <Content Include="views\contact.pug" />
+    <Content Include="views\dataEntry.pug">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="views\dataEntry_Content.pug">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="views\index.pug" />
+    <Content Include="views\layout.pug" />
+    <Content Include="views\login.pug" />
+    <Content Include="views\obsolete\messageSent.pug" />
+    <Content Include="views\portfolio.pug" />
+    <Content Include="views\privacy.pug" />
+    <Content Include="views\search.pug" />
+    <Content Include="views\obsolete\slideshow.pug" />
+    <Content Include="views\TEMPLATE.pug" />
+    <Content Include="static\assets\AboutImage1.png" />
+    <Content Include="static\assets\msr_logo.png" />
+    <Content Include="static\assets\trove_logo.png" />
+    <Content Include="static\assets\aif_logo.jpg" />
+    <Content Include="static\assets\awm_logo.jpg" />
+    <Content Include="static\assets\naa_logo.jpg" />
+    <Content Include="static\scripts\index.js" />
+    <Content Include="static\scripts\login.js" />
+    <Content Include="static\scripts\map.js" />
+    <Content Include="static\scripts\portfolio.js" />
+    <Content Include="static\scripts\slideshow.js" />
+    <Content Include="static\styles\login.css" />
+    <Content Include="static\styles\messageSent.css" />
+    <Content Include="static\styles\portfolio.css" />
+    <Content Include="static\styles\slideshow.css" />
+    <Content Include="static\styles\style.css" />
+    <Content Include="static\assets\slideshow\1.jpg" />
+    <Content Include="static\assets\slideshow\2.jpg" />
+    <Content Include="static\assets\slideshow\3.jpg" />
+    <Content Include="static\assets\slideshow\4.jpg" />
+    <Content Include="views\Timeline.pug" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="data_access\models\" />
+    <Folder Include="dev_utility" />
+    <Folder Include="data_access\" />
+    <Folder Include="routing\" />
+    <Folder Include="routing\private\" />
+    <Folder Include="routing\private\controllers\" />
+    <Folder Include="routing\public\controllers\" />
+    <Folder Include="routing\public\" />
+    <Folder Include="static\" />
+    <Folder Include="static\assets\" />
+    <Folder Include="static\assets\slideshow\" />
+    <Folder Include="static\scripts\" />
+    <Folder Include="static\styles\" />
+    <Folder Include="views\" />
+    <Folder Include="views\obsolete\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="data_access\models\Content.js" />
+    <Compile Include="data_access\models\LifeStage.js" />
+    <Compile Include="data_access\models\MediaType.js" />
+    <Compile Include="data_access\models\Multimedia.js" />
+    <Compile Include="data_access\models\Portfolio.js" />
+    <Compile Include="data_access\models\Slide.js" />
+    <Compile Include="data_access\sequelize-auto.js" />
+    <Compile Include="data_access\sequelize.js" />
+    <Compile Include="routing\public\controllers\portfolio_id.js" />
+    <Compile Include="routing\test_routes.js" />
+    <Compile Include="static\scripts\search.js" />
+    <Compile Include="static\scripts\timeline.js">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <!--Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them.-->
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:48022/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost:1337</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

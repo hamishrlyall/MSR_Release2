@@ -1,0 +1,42 @@
+extends layout.pug
+
+prepend styles
+    //link(rel="stylesheet", href="/styles/index.css")
+    //link(rel="stylesheet", href="/styles/search.css")
+
+prepend scripts
+    script(src="/scripts/index.js")
+
+block content
+    div.mb-3
+        h2.title Profile Search:
+        form.col-sm.px-0(action="/search", method="get")
+            div.input-group.stylish-input-group
+                input.form-control(type="search", name="place" placeholder="Address")
+                span.input-group-addon
+                    input.btn.btn-secondary.mb-lg(type="submit", value="Search")
+    div.card-deck.mx-6
+        div.card.text-white.bg-dark.mb-3
+            a(href="https://www.aif.adfa.edu.au/index.html", target="_blank")
+                img.card-img-top(src="/assets/aif_logo.jpg", alt="")
+            div.card-body
+                h4.card-title AIF Project
+                p.card-text An officially sourced database, including personal files, Embarkation and Nominal Rolls.
+        div.card.text-white.bg-dark.mb-3
+            a(href="https://www.awm.gov.au/", target="_blank")
+                img.card-img-top(src="/assets/awm_logo.jpg", alt="")
+            div.card-body
+                h4 Australian War Memorial
+                p The Australian War Memorial combines a shrine, a world-class museum, and an extensive archive.
+        div.card.text-white.bg-dark.mb-3
+            a(href="http://www.naa.gov.au/", target="_blank")
+                img.card-img-top(src="/assets/naa_logo.jpg", alt="")
+            div.card-body 
+                h4 National Archives Australia
+                p The National Archives of Australia collects and preserves Australian Government records that reflect our history and identity.
+        div.card.text-white.bg-dark.mb-3
+            a(href="https://trove.nla.gov.au/", target="_blank")
+                img.card-img-top(src="/assets/trove_logo.png", alt="")
+            div.card-body
+                h4 Trove
+                p Trove brings together content from libraries, museums, archives, and other collecting organisations big and small.

@@ -1,0 +1,48 @@
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+        link(rel="icon", type="image/x-icon",  href="assets/favicon.ico")
+        title My School Remembers
+        block styles     
+            link(rel="stylesheet", href="/styles/style.css")
+            link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous")
+    body
+        header
+            #title
+                a(href="/")
+                    img#logo(src="/assets/msr_logo.png", alt="The My School Remembers logo, a rainbow pinwheel")
+                    h1.text-shadow MY SCHOOL<br/>REMEMBERS
+            nav.navbar.navbar-expand-lg.navbar-light.py-0#navbar
+                button.navbar-toggler.collapsed(type="button" data-target="#NavItems" data-toggle="collapse" aria-controls="NavItems" aria-expanded="false" aria-label="Toggle navigation")
+                    span.navbar-toggler-icon
+
+                div.collapse.navbar-collapse.justify-content-md-center#NavItems
+                    ul.navbar-nav
+                        li.nav-item
+                            a.nav-link.font-weight-bold.text-dark(href="/") HOME
+                        li.nav-item
+                            a.nav-link.font-weight-bold.text-dark(href="/about") ABOUT
+                        li.nav-item
+                            a.nav-link.font-weight-bold.text-dark(href="/search") SEARCH
+                                
+                        li.nav-item.dropdown
+                            a.nav-link.font-weight-bold.text-dark.dropdown-toggle(href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") EDUCATION
+                            div.dropdown-menu.p-0(aria-labelledby="navbarDropdownMenuLink")
+                                a.dropdown-item(href="/login") STUDENT
+                                a.dropdown-item(href="/login") TEACHER
+                        li.nav-item
+                            a.nav-link.font-weight-bold.text-dark(href="/portfolio") PORTFOLIOS
+                
+        div.container
+            block content
+        footer.footer
+            div.container
+                span.align-baseline
+                    a(href="/privacy" style="color:black") Privacy Policy 
+                span.align-baseline | &copy; 2018 My School Remembers
+        block scripts
+            script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous")
+            script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous")
+            script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous")

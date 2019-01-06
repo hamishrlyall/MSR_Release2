@@ -1,0 +1,20 @@
+extends layout.pug
+
+prepend styles
+    link(rel="stylesheet", href="/styles/slideshow.css")
+
+prepend scripts
+    script(src="/scripts/slideshow.js")
+
+block content
+    //-CONTENT-STARTS-HERE-//
+    .slideshow
+        input.slide-plus(type="button", value=">")
+        input.slide-minus(type="button", value="<")
+        .slide(style="background-image: url('/assets/slideshow/1.jpg');")
+        .slide(style="background-image: url('/assets/slideshow/2.jpg');")
+        .slide(style="background-image: url('/assets/slideshow/3.jpg');")
+        .slide(style="background-image: url('/assets/slideshow/4.jpg');")
+
+
+        

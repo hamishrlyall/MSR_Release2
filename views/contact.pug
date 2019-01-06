@@ -1,0 +1,35 @@
+extends layout.pug
+
+append styles
+    //-link(rel="stylesheet", href="/styles/contact.css")
+
+prepend scripts
+    //-script(src="/scripts/FILENAME.js")
+
+block content
+    //-CONTENT
+    h1.title Get in contact
+    section.row
+        div.col-md-6
+            form(action="/messageSent", method="get" onsubmit="this.submit(); this.reset(); return false;")
+                div.form-group
+                    label(for="name") Name
+                    input.form-control(type="text" name="name")
+                div.form-group
+                    label(for="email") Email
+                    input.form-control(type="email" name="email")
+                div.form-group
+                    label(for="subject") Subject
+                    input.form-control(type="text" name="subject")
+                div.form-group
+                    label(for="message") Message
+                    textarea.form-control(cols="30", rows="10" name="message")
+                div.form-group
+                    input.btn.btn-secondary.col-md-2(type="submit", value="send")    
+        div.col-md-3       
+        div.col-md-3
+            h3 Phone Number
+            h5 John Smith
+            p (+61)234 555 798
+            h3 Mailing Address
+            p 123 Address Avenue, Melbourne Victoria
